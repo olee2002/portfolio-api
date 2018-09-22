@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "olee",
+    "database": "portfolio",
+    "password": null,
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "logging": false
+  },
+  "test": {
+    "username": "olee",
+    "password": null,
+    "database": "portfolio",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
+  },
+  "production": {
+    "username": "olee",
+    "password": null,
+    "database": "portfolio",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
+  }
+}
