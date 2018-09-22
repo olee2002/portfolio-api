@@ -5,7 +5,7 @@ module.exports = {
     database: "portfolio",
     dialect: "postgres",
     host: "127.0.0.1",
-    logging: false
+    logging: true
   },
   production: {
     database: process.env.DATABASE_NAME,
