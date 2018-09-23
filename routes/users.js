@@ -12,8 +12,6 @@ router.get('/test', async (req, res, next) => {
 });
 router.post('/test', async (req, res, next) => {
   console.log('req.body', req.body)
-  // const users = await Model.user.create({});
-  // res.json(users);
 });
 
 module.exports = router;
