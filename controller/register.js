@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize');
-const Model = require('../models')
-
+const Model = require('../models');
+const User = Model.user;
 const errmsg = 'Email exists in the database.'
 
-const register = async (req, res, next) => {
+const create = async (req, res, next) => {
     try {
-        // const encryted = Model.user.authenticate(req.body);
+        // const encryted = User.authenticate(req.body);
 
         if (req.body) {
             const user = {
@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
                 email: req.body.email,
                 password: req.body.password,
             }
-            const emailValid = await Model.user.findOne({
+            const emailValid = await User.findOne({
                 where: {
                     email: user.email
                 }
@@ -23,7 +23,7 @@ const register = async (req, res, next) => {
                 res.status(500).json(errmsg)
                 throw new Error(errmsg)
             } else {
-                await Model.user.create(user);
+                await User.create(user);
                 delete user.password;
                 res.status(200).json(user);
             }
@@ -35,4 +35,4 @@ const register = async (req, res, next) => {
 
 }
 
-module.exports.register = register;
+module.exports.create = create;
