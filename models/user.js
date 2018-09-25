@@ -1,6 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
@@ -31,8 +31,9 @@ function authenticate(password) {
 
 function encryptPassword(user, options, callback) {
   if (user.password) {
-    user.encrypted_password = bcrypt.hashSync(user.password, 10);
+    const salt = bcrypt.genSaltSync(10);
+    user.encrypted_password = bcrypt.hashSync(user.password, salt);
     user.password = user.encrypted_password;
   }
-  console.log('encryted', user.encrypted_password)
+  console.log('password has been encryted.')
 }
