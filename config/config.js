@@ -5,7 +5,8 @@ module.exports = {
     database: "portfolio",
     dialect: "postgres",
     host: "127.0.0.1",
-    logging: false
+    logging: false,
+    operatorsAliases: false
   },
   production: {
     database: process.env.DATABASE_NAME,
@@ -13,6 +14,9 @@ module.exports = {
     password: process.env.DATABASE_PASSWORD,
     host: process.env.DATABASE_HOST,
     dialect: "postgres",
-    use_env_variable: 'DATABASE_URL'
+    use_env_variable: 'DATABASE_URL',
+    logging: false,
+    freezeTableName: true,
+    operatorsAliases: false
   }
 };
