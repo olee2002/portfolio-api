@@ -5,7 +5,7 @@ const User = Model.user;
 
 
 const create = async (req, res, next) => {
-
+    res.set("Content-Type", "application/json")
     try {
         const user = {
             email: req.body.email,
@@ -16,12 +16,16 @@ const create = async (req, res, next) => {
                 email: user.email
             }
         });
-
+        if (!userData) {
+            const err = 'Email! Not Found';
+            res.status(404).json(err);
+        }
         const data = userData.dataValues;
-        if (!bcrypt.compareSync(user.password, data.password)) throw new Error('Incorrect Password');
         if (data && bcrypt.compareSync(user.password, data.password)) {
             delete data.password;
             res.status(200).json(data);
+        } else {
+            res.status(404).json('Password! Not Found');
         }
     }
     catch (err) {

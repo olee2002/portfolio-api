@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const Model = require('../models');
 const User = Model.user;
-const errmsg = 'Email exists in the database.'
+const errmsg = { error: 'Email exists in the database.' }
 
 const create = async (req, res, next) => {
     try {
@@ -20,8 +20,8 @@ const create = async (req, res, next) => {
                 }
             });
             if (emailValid) {
-                res.status(500).json(errmsg)
-                throw new Error(errmsg)
+                res.json(errmsg)
+                // throw new Error(errmsg)
             } else {
                 await User.create(user);
                 delete user.password;
