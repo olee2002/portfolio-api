@@ -17,7 +17,7 @@ const create = async (req, res, next) => {
             }
         });
         if (!userData) {
-            const err = 'Email! Not Found';
+            const err = 'Email Not Found!';
             res.status(404).json(err);
         }
         const data = userData.dataValues;
@@ -25,7 +25,7 @@ const create = async (req, res, next) => {
             delete data.password;
             res.status(200).json(data);
         } else {
-            res.status(404).json('Password! Not Found');
+            res.status(404).json('Incorrect Password!');
         }
     }
     catch (err) {
