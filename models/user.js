@@ -13,22 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
   };
-  // User.prototype.authenticate = authenticate;
+  
   User.beforeCreate(encryptPassword);
 
   return User;
 };
 
-
-
-// function authenticate(password) {
-//   console.log('this', this.encrypted_password, password)
-//   if (bcrypt.compareSync(password, this.encrypted_password)) {
-
-//     return this;
-//   };
-//   return false;
-// }
 
 function encryptPassword(user, options, callback) {
   if (user.password) {
