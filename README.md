@@ -1,4 +1,4 @@
-# portfolio-api
+# portfolio-api (Backend)
 Node | Express| Sequelize(ORM)| Postgreql API
 
 Building API Backend for dealing with user logIn and SignUps.
