@@ -11,6 +11,7 @@ const create = async (req, res, next) => {
             email: req.body.email,
             password: req.body.password
         };
+        console.error('pw', req.body, req.body.password)
         const userData = await User.findOne({
             where: {
                 email: user.email
